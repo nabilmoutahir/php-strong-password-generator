@@ -1,3 +1,20 @@
+<?php
+
+
+
+
+?>
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,9 +31,17 @@
 
     <div class="d-flex justify-content-center align-content-center">
 
-        <form action="" class="row col-6">
+        <form method="get" action="" class="row col-6 mt-5">
 
-            
+            <h1 class="text-center">Password Generator</h1>
+
+            <div class="mb-3 d-flex">
+
+                <label class="form-label">Numero caratteri</label>
+                <input type="number" class="form-control text-center">
+                <button type="button" class="btn btn-primary">Send</button>
+
+            </div>
 
 
         </form>
