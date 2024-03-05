@@ -1,46 +1,6 @@
 <?php
 
-    // LUNGHEZZA PASSWORD
-    $password_len = !empty($_GET["pass-len"]) ? $_GET['pass-len'] : 5;
-    
-    var_dump($password_len);
-    
-    // ARRAY CARATTERI
-    $characters=[
-        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-        'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
-        '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '+', '=', '{', '}', '[', ']', '|', ':', ';', '"', "'",'<', '>', ',', '.', '?', '/'
-        ,0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
-    ];
-
-    // FUNCTION PASSWORD GENERATOR
-    function generate_password ($characters, $password_len) {
-
-        // NEW PASS ARRAY
-        $password = [];
-
-        for ($i = 0; $i <= $password_len; $i++) {
-
-            // RANDOM CHARACTER KEY
-            $character_key = array_rand($characters);
-
-            // RANDOM CHARACTER
-            $character = $characters[$character_key];
-
-            // PUSH INTO NEW PASS ARRAY
-            $password[] = $character;
-
-        }
-
-        // IMPLODE ARRAY
-        $new_password = implode('', $password);
-
-        // RETURN
-        return $new_password;
-
-    };
-
-    var_dump(generate_password($characters, $password_len))
+    include_once __DIR__ . "/./functions.php";
 
 ?>
 
@@ -60,24 +20,36 @@
 
 <body>
 
-    <div class="d-flex justify-content-center align-content-center">
+    <div class="d-flex justify-content-center align-content-center row">
 
-        <form method="GET" action="" class="row col-6 mt-5">
+        <h1 class="text-center mt-5">Password Generator</h1>
 
+        <form method="GET" action="" class="mt-2 col-2 text-center">
+
+            <label class="form-label">Scegli il numero di caratteri</label>
+            
+            <input type="number" name="pass-len" placeholder="min 5 - max 90" min="5" max="90" class="form-control text-center my-3">
+            
+            <button class="btn btn-primary col-12">Send</button>
             
 
-            <label class="form-label">Numero caratteri</label>
-            
-            <input type="number" name="pass-len" placeholder="min 5 - max 90" min="5" max="90" class="form-control text-center">
-            
-            <button class="btn btn-primary">Send</button>
         </form>
 
-        <div>
-            <!-- <?php echo $new ?>  -->
+
+        <div class="text-center mt-5">
+
+            <h4>La tua password è:</h4>
+            
+            <div>
+                <?php echo $password_generator ?>
+            </div>
+
         </div>
+
+        
     </div>
 
+    
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
