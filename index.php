@@ -13,6 +13,35 @@
         ,0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
     ];
 
+    // FUNCTION PASSWORD GENERATOR
+    function generate_password ($characters, $password_len) {
+
+        // NEW PASS ARRAY
+        $password = [];
+
+        for ($i = 0; $i <= $password_len; $i++) {
+
+            // RANDOM CHARACTER KEY
+            $character_key = array_rand($characters);
+
+            // RANDOM CHARACTER
+            $character = $characters[$character_key];
+
+            // PUSH INTO NEW PASS ARRAY
+            $password[] = $character;
+
+        }
+
+        // IMPLODE ARRAY
+        $new_password = implode('', $password);
+
+        // RETURN
+        return $new_password;
+
+    };
+
+    var_dump(generate_password($characters, $password_len))
+
 ?>
 
 
